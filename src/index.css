@@ -1,0 +1,69 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+:root{
+  --white: #ebe6ff;
+}
+
+
+body{
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  font-size: 1.8rem;
+  font-family: 'Ubuntu', sans-serif;
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* login styles */
+.login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 70%;
+  height: 50%;
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 50px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+/* media queries */
+@media (min-width: 481px) and (max-width: 767px) {
+  /* login styles */
+  .login-form{
+    width: 60%;
+    height: 50%;
+  }
+}
+
+@media (min-width: 767px) {
+  /* login styles */
+}
+
+@media (min-width: 1600px) {
+  /* login styles */
+
+}
