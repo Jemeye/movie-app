@@ -5,6 +5,8 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/login.tsx'
 import Register from './pages/register.tsx'
+import ContentCategory from './pages/contentCategory.tsx'
+import ContentDetails from './pages/contentDetails.tsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +22,20 @@ const router = createBrowserRouter([
     path: "register",
     element: <Register />,
     errorElement: <div className='not-found'>404 Not Found</div>
+  },
+  {
+    path: "category",
+    element: <ContentCategory />,
+    errorElement: <div className='not-found'>404 Not Found</div>
+  },
+  {
+    path: "movie",
+    element: <ContentDetails />,
+    errorElement: <div className='not-found'>404 Not Found</div>
+  },
+  {
+    path: "*",
+    element: <div className='not-found'>404 Not Found</div>
   }
 ]);
 

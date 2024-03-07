@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { RiMovie2Fill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,22 @@ import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
 
     const [activeSublist, setActiveSublist] = useState<boolean>(false);
+    const sublistRef = useRef<HTMLUListElement>(null);
+
+    // Listen for clicks outside the nav-sublist to close it
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (sublistRef.current && !sublistRef.current.contains(event.target as Node)) {
+                setActiveSublist(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <header className="header-container">
@@ -24,7 +40,7 @@ const Header: React.FC = () => {
                     }}>Categories
                         {
                             activeSublist
-                                ? <ul className="nav-sublist">
+                                ? <ul className="nav-sublist" ref={sublistRef}>
                                     <li className="nav-subitem"><Link to="/comedy">Crime</Link></li>
                                     <li className="nav-subitem"><Link to="/action">Drama</Link></li>
                                     <li className="nav-subitem"><Link to="/drama">Action</Link></li>
