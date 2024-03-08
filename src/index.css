@@ -210,8 +210,13 @@ li{
   background-color: var(--primary-color);
 }
 
-.header-container .nav-container .nav-list .nav-item .nav-sublist li:hover a{
+.header-container .nav-container .nav-list .nav-item .nav-sublist a:hover{
   color: var(--white);
+}
+
+.header-container .nav-container .nav-list .nav-item .nav-sublist li a{
+  width: 118px;
+
 }
 
 /* login styles */

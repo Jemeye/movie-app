@@ -50,16 +50,16 @@ const Header: React.FC = () => {
                         {
                             activeSublist
                                 ? <ul className="nav-sublist" ref={sublistRef}>
-                                    <li className="nav-subitem"><Link to="/category/crime">Crime</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/drama">Drama</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/action">Action</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/biography">Biography</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/adventure">Adventure</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/comedy">Comedy</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/sci-fi">Sci-Fi</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/animation">Animation</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/war">War</Link></li>
-                                    <li className="nav-subitem"><Link to="/category/romance">Romance</Link></li>
+                                    <Link to="/category/crime"> <li className="nav-subitem">Crime</li></Link>
+                                    <Link to="/category/drama"> <li className="nav-subitem">Drama</li></Link>
+                                    <Link to="/category/action"><li className="nav-subitem"> Action </li></Link>
+                                    <Link to="/category/biography"><li className="nav-subitem">Biography </li></Link>
+                                    <Link to="/category/adventure"><li className="nav-subitem">Adventure </li></Link>
+                                    <Link to="/category/comedy"><li className="nav-subitem">Comedy </li></Link>
+                                    <Link to="/category/sci-fi"><li className="nav-subitem">Sci-Fi </li></Link>
+                                    <Link to="/category/animation"> <li className="nav-subitem">Animation </li></Link>
+                                    <Link to="/category/war"><li className="nav-subitem">War </li></Link>
+                                    <Link to="/category/romance"><li className="nav-subitem">Romance </li></Link>
                                 </ul>
                                 : <></>
                         }
