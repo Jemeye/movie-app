@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { RiMovie2Fill } from "react-icons/ri";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/footer';
+import { firebaseService } from '../service/firebase';
+import { useAuth } from '../contexts/AuthContext';
 
 const Register: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [passwordConfirm, setPasswordConfirm] = useState<string>('');
-    const [emailError, setEmailError] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+    const [emailError, setEmailError] = useState<string>("");
+    const [passwordError, setPasswordError] = useState<string>("");
+    const { setUserCredential } = useAuth();
+    const navigate = useNavigate();
 
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
@@ -32,20 +36,35 @@ const Register: React.FC = () => {
         }
     };
 
-
     //function to create a new user
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(`Email: ${email}, Password: ${password}`);
-
+        const api = firebaseService();
         if (password === passwordConfirm) {
             setPasswordError("");
+            api.registerUser(email, password).then((credential) => {
+                credential.user.getIdToken().then((idToken: string) => {
+                    const user = {
+                        uid: credential.user.uid,
+                        token: idToken
+                    };
+                    setUserCredential(user);
+                    setEmail('');
+                    setPassword('');
+                    setPasswordConfirm('');
+                    navigate('/');
+                })
+                alert("Registration successful!");
+            }).catch((error) => {
+                alert("Registration failed, please try again or contact support");
+                setEmail('');
+                setPassword('');
+                setPasswordConfirm('');
+            })
+
         } else {
             setPasswordError("Passwords do not match");
         }
-        setEmail('');
-        setPassword('');
-        setPasswordConfirm('');
     };
 
     return (

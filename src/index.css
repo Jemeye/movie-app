@@ -153,6 +153,7 @@ li{
 .header-container .nav-container .nav-list svg{
   width: 20px;
   height: 20px;
+  color: var(--white);
 }
 
 .header-container .nav-container .nav-list .nav-item {

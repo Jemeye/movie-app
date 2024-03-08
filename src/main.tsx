@@ -1,46 +1,31 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import App from './App';
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/login.tsx'
 import Register from './pages/register.tsx'
 import ContentCategory from './pages/contentCategory.tsx'
 import ContentDetails from './pages/contentDetails.tsx'
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <div className='not-found'>404 Not Found</div>
-  },
-  {
-    path: "login",
-    element: <Login />,
-    errorElement: <div className='not-found'>404 Not Found</div>
-  },
-  {
-    path: "register",
-    element: <Register />,
-    errorElement: <div className='not-found'>404 Not Found</div>
-  },
-  {
-    path: "category",
-    element: <ContentCategory />,
-    errorElement: <div className='not-found'>404 Not Found</div>
-  },
-  {
-    path: "movie",
-    element: <ContentDetails />,
-    errorElement: <div className='not-found'>404 Not Found</div>
-  },
-  {
-    path: "*",
-    element: <div className='not-found'>404 Not Found</div>
-  }
-]);
+import { AuthProvider } from './contexts/AuthContext.tsx'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+const Root = () => {
+  return (
+    <React.StrictMode>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/category/:categoryId" element={<ContentCategory />} />
+            <Route path="/movie/:movieId" element={<ContentDetails />} />
+            <Route path="*" element={<div className='not-found'>404 Not Found</div>} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </React.StrictMode>
+  );
+};
+
+ReactDOM.render(<Root />, document.getElementById('root'));

@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { RiMovie2Fill } from "react-icons/ri";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/footer';
+import { firebaseService } from '../service/firebase';
+import { useAuth } from '../contexts/AuthContext';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [emailError, setEmailError] = useState("");
+  const [emailError, setEmailError] = useState<string>("");
+  const [loginError, setLoginError] = useState<string>("");
+  const { setUserCredential } = useAuth();
+  const navigate = useNavigate();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -27,11 +32,25 @@ const Login: React.FC = () => {
   };
 
   //function to create a new user session
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(`Email: ${email}, Password: ${password}`);
-    setEmail('');
-    setPassword('');
+    const api = firebaseService();
+    try {
+      const credential = await api.signInUser(email, password);
+      credential.user.getIdToken().then((idToken: string) => {
+        const user = {
+          uid: credential.user.uid,
+          token: idToken
+        };
+        setUserCredential(user);
+        setEmail('');
+        setPassword('');
+        navigate('/');
+      })
+    } catch (error) {
+      console.error(error);
+      setLoginError("Email or password is incorrect");
+    }
   };
 
   return (
@@ -55,6 +74,7 @@ const Login: React.FC = () => {
               {emailError && <p className="error-message">{emailError}</p>}
             </div>
             <input type="password" value={password} onChange={handlePasswordChange} placeholder='Enter your password' required />
+            {loginError && <p className="error-message">{loginError}</p>}
             <button type="submit" className='btn-auth'>Sign In</button>
             <p>Don't have an account? <Link to="/register">Sign Up</Link></p>
           </form>
