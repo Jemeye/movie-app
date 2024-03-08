@@ -3,16 +3,16 @@
 El proyecto "Movie App" es una aplicación web que permite a los usuarios acceder y visualizar información sobre películas almacenadas en una base de datos Firestore de Firebase. Además, ofrece funciones de registro, inicio de sesión y cierre de sesión para los usuarios.
 
 ## Páginas
-- Página de Inicio (Home): Aquí se encuentra la lista completa de categorías de películas. Esta lista solo se mostrará si el usuario ha iniciado sesión previamente. En caso contrario, será redirigido automáticamente a la página de inicio de sesión.
 - Página de Inicio de Sesión (Login): En esta página, los usuarios pueden acceder al formulario de inicio de sesión, donde ingresarán sus credenciales para acceder a la lista de películas y disfrutar de todas las funcionalidades del sitio.
 - Página de Registro (Register): En esta página, los usuarios pueden acceder al formulario de registro, donde ingresarán sus datos de usuario (correo electrónico y contraseña), los cuales se guardarán en el servicio de autenticación proporcionado por Firebase.
+- Página de Inicio (Home): Aquí se encuentra la lista completa de categorías de películas. Esta lista solo se mostrará si el usuario ha iniciado sesión previamente. En caso contrario, será redirigido automáticamente a la página de inicio de sesión.
 - Categoría (Category/categoryId): En esta página se muestra el detalle de una categoría específica. Además, se muestran todas las películas de esa categoría almacenadas en la colección de Firestore.
 - Película (Movie/movieId): En esta página se muestra el detalle de una película, donde los usuarios pueden ver información como la sinopsis, el director, la duración, el año de publicación y un tráiler de la película.
 
 ## Funcionalidades
 - Visualización de categorías: Los usuarios pueden explorar tuan lista de categorías disponibles y obtener información detallada sobre estas, como, las películas disponibles de esta categoría.
 - Visualización de películas: Los usuarios pueden explorar una lista de películas por categoría disponibles y obtener información detallada sobre cada una, como el título, el director, el año de lanzamiento, la sinopsis, la duración, la categoría y el tráiler.
-- Autenticación de usuarios: Los usuarios pueden registrarse en la plataforma mediante un formulario de registro y luego iniciar sesión utilizando sus credenciales. También tienen la opción de cerrar sesión cuando lo deseen.Inciar sesión y cerrar sesión: la aplicación le permite al usuario iniciar sesión mediante el formulario de login, y cerrar sesión dándole click al botón de salir ubicado en el header.
+- Autenticación de usuarios: Los usuarios pueden registrarse en la plataforma mediante un formulario de registro y luego iniciar sesión utilizando sus credenciales. También tienen la opción de cerrar sesión cuando lo deseen dándole click al botón de salir ubicado en el header.
   
 ## Uso
 - Para comenzar, se debe iniciar sesión con la dirección de correo electrónico. Si se desea crear una cuenta nueva, se debe dar click en el botón Sign Up que redigirá al formulario de registro, de lo contrario se puede acceder con las siguientes credenciales.
@@ -32,8 +32,8 @@ El proyecto "Movie App" es una aplicación web que permite a los usuarios accede
 
 ## Instalación
 - Clona el repositorio del proyecto desde GitHub.
-- Instala las dependencias del proyecto utilizando npm install
-- Ejecuta la aplicación utilizando el comando  npm run dev.
+- Instala las dependencias del proyecto utilizando `npm install`.
+- Ejecuta la aplicación utilizando el comando  `npm run dev`.
 - Abre tu navegador web y accede a la dirección local donde se ejecuta la aplicación.
 
 
