@@ -55,7 +55,7 @@ const Register: React.FC = () => {
                     navigate('/');
                 })
                 alert("Registration successful!");
-            }).catch((error) => {
+            }).catch(() => {
                 alert("Registration failed, please try again or contact support");
                 setEmail('');
                 setPassword('');

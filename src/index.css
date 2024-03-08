@@ -123,6 +123,7 @@ li{
   border-bottom: 1px solid var(--background-color);
   background-color: transparent;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  z-index: 1;
 }
 
 .header-container .logo-container {
@@ -197,6 +198,7 @@ li{
   border-radius: 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   font-size: 15px;
+  z-index: 12;
 }
 
 .header-container .nav-container .nav-list .nav-item .nav-sublist li{
@@ -306,7 +308,7 @@ li{
   text-align: start;
   padding-left: 5px;
   padding-top: 5px;
-  color: var(--primary-color);
+  color: red;
   font-size: 1.3rem;
   font-weight: 500;
 }
@@ -387,6 +389,7 @@ li{
   transform: translate(-50%, -50%);
   font-size: 2rem;
   font-weight: 600;
+  text-align: center;
   color: var(--white);
   z-index: 1;
 }
@@ -589,7 +592,7 @@ li{
   }
 
   .container .category-grid.--movie{
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px,250px));
   }
 
   .movie-trailer .movie-trailer__video iframe{
