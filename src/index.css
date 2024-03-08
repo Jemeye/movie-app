@@ -227,6 +227,7 @@ li{
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  padding-bottom: 50px;
 }
 
 .login-form{
@@ -568,6 +569,10 @@ li{
   }
  
   /* login styles */
+  .login{
+    padding-bottom: 70px;
+  }
+
   .form-title{
     font-size: 1.8rem;
   }
@@ -607,7 +612,12 @@ li{
   }
 }
 
-@media (min-width: 1600px) {
-  /* login styles */
+@media (max-height: 750px) {
+  .login-form{
+    height: 70%;
+  }
 
+  .login-form.--register{
+    height: 85%;
+  }
 }
